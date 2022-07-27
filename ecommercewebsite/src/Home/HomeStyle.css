@@ -1,0 +1,76 @@
+﻿body
+{
+}
+
+
+.scrollToTop {
+    position: fixed;
+    bottom: 40px;
+    right: 25px;
+    z-index: 20;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.30);
+}
+.arrowUp {
+    color: purple;
+    height: 25px;
+    width: 25px;
+}
+.productCardQuickView {
+    background-color: lightcoral;
+    width: 100%;
+    border: 0px;
+    border-radius: 0px;
+    
+    display: none;
+}
+.productsCard {
+    width: 200px;
+    margin: 10px;
+    padding: 0px;
+    border-radius: 1px;
+    border:0px;
+    background-color:white;
+    position:relative;
+}
+
+    .productsCard:hover .productCardQuickView {
+        display: block;
+        outline: 1px solid lightcoral;
+        position: absolute;
+        left: 0%;
+        bottom:0%;
+        z-index: 2;
+        height:40px;
+        border-radius: 0px 0px 5px 5px;
+    } .productsCard:hover  {
+        display: block;
+        outline: 1px solid lightcoral;
+    }
+quickViewContents {
+    content: "";
+    display: table;
+    clear: both;
+}
+quickViewPicture {
+    float: left;
+    width: 60%;
+    height: auto;
+}
+quickViewText {
+    float: left;
+    width: 40%;
+    /*background-color: #f1f1f1;*/
+    height: auto;
+}
+.quickViewFrame {
+    width: 100%;
+    height:auto;
+    margin-right: 2%;
+    margin-left: auto;
+    overflow: auto;
+}
