@@ -13,11 +13,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
+import CloseButton from 'react-bootstrap/CloseButton';
 
 import './HomeStyle.css';
+import CartDatatable from './CartDatatable';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faArrowUpLong,faCartShopping, faShoppingBag, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faArrowUpLong,faCartShopping, faShoppingBag, faShoppingCart,faXmark,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { pink } from "@mui/material/colors";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -25,7 +29,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function HomePage() {
     //testData
-        const productList = [
+    const productList = [
         { productID: 329839, productName: 'Minion fries', price: 50.00, rating: 3, description: 'The only few minion fries', seller: 'MacRonald', amtSold: 5, amtAvailable: 10, productType: 'Food', picturePath: Minions },
         { productID: 439823, productName: 'Socks', price: 1.00, rating: 2, description: 'Socks used with love', seller: 'Dave', amtSold: 3, amtAvailable: 10, productType: 'Clothes', picturePath: Socks },
         { productID: 483923, productName: 'Cat stickers', price: 1.00, rating: 4, description: 'Perfect for decoration!', seller: 'Catto Inc', amtSold: 2730, amtAvailable: 4000, productType: 'Supplies', picturePath: CatStickers },
@@ -62,7 +66,11 @@ function HomePage() {
 
     //shopping cart
     const [cart, setCart] = useState([]);
-    
+
+    const [show, setShow] = useState(false);
+    const [indexCartDelete, setIndexCartDelete] = useState(0);
+
+
     useEffect(() => {
         window.addEventListener('scroll', scrollAppear);
     }, []);
@@ -96,7 +104,8 @@ function HomePage() {
     };
     
 
-    //modal
+
+    //modal for quick view
     function MyVerticallyCenteredModal(props) {
 
         return (
@@ -144,19 +153,62 @@ function HomePage() {
     }
     //adds product into shopping cart
     function addToCart(index) {
-        cart.push(productList[index])
+        if (findCart(cart, productList[index].productID)) {
+            cart.push(productList[index])
+            alert("Added into cart!")
+        } else {
+            alert("Already added into cart!")
+        }
+        
     }
     //show the shopping cart
     function showCart(){
     //    document.getElementById("shoppingCart").style.width = "250px";
-        document.getElementById("shoppingCart").style.left = "auto";
         document.getElementById("shoppingCart").style.right = "0%";
     }
     //hide the shopping cart
     function hideCart(){
     //    document.getElementById("shoppingCart").style.width = "0px";
-        document.getElementById("shoppingCart").style.left = "100%";
-        document.getElementById("shoppingCart").style.right = "auto";
+        document.getElementById("shoppingCart").style.right = "-50%";
+    }
+
+
+    function findCart(arr, find) {
+        var check = true;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].productID === find) {
+                // __FOUND is set to the index of the element
+                check = false
+                break;
+            }
+        }
+        return check;
+    }
+    const [totalCost, setTotalCost] = useState(0);
+    useEffect(() => {
+        let add=0;
+        for (var i = 0; i < cart.length; i++) {
+            add += parseInt(cart[i].price.toFixed(2))
+            setTotalCost(add.toFixed(2))
+            
+        }
+    });
+    
+    
+    //const handleClose = () => setShow(false);
+    //const handleShow = () => setShow(true);
+    function handleShow(index) {
+        setShow(true)
+        setIndexCartDelete(index)
+    }
+    function handleClose() {
+        setShow(false)
+    }
+    function handleCloseAndDelete() {
+        setShow(false)
+        alert(cart[indexCartDelete].productName +" removed from cart!")
+        cart.splice(indexCartDelete, 1)
+        
     }
     return (
         //onSubmit={ilterdata(OppoList)}
@@ -169,7 +221,8 @@ function HomePage() {
             <NavBar  />
             <div className="main">
                 <h1>Products</h1>
-                {cart.map((row, key) => <h1 >{productList[0].productName}</h1>)}
+                {/*{cart.map((row, key) => <h1 >{productList[0].productName}</h1>)}*/}
+                <h1 >{cart.length}</h1>
                 <div class="myDIV">Hover over me.</div>
                 <div class="hide">I am shown when someone hovers over the div above.</div>
 
@@ -194,7 +247,7 @@ function HomePage() {
                                                                 cursor: "pointer"
                                                             }}></FontAwesomeIcon>)})}
 
-                                            </div>${row["price"]}
+                                            </div>${row["price"].toFixed(2)}
                                             <button className="productCardQuickView" onClick={() => update(index)}>Quick View</button>
                                         </Card.Text>
                                         
@@ -210,15 +263,67 @@ function HomePage() {
                     )}
                 </Row>
                 </div>
-                <div class="shoppingCart" id="shoppingCart">
-                    <div>
-                        <button onClick={() => hideCart()}>lol</button>
-                        </div>
+                <div className="shoppingCart" id="shoppingCart">
+                    <div class="cartTopSection">
+                        {/*<button class="cartCloseButton" onClick={() => hideCart()}><FontAwesomeIcon icon={faXmark} size='2xl'>lol</FontAwesomeIcon></button>*/}
+                        <CloseButton className="cartCloseButton"  onClick={() => hideCart()}/>
+                    </div>
+
+                    <div class="cartMiddleSection">
+                        
+                        {/*<CartDatatable data={cart}/>*/}
+                        {
+                            cart.map((row, i, key) =>
+                                <div class="singleCardInCart">
+                                    <div class="singleCardInCartLeftSection">
+                                        <div>
+                                            <img src={row["picturePath"]} style={{ width: '80%', height: '80%', margin: '10%' }} />
+                                        </div>
+                                    </div>
+                                    <div class="singleCardInCartRightSection">
+                                        <div style={{ textAlign: 'left', paddingTop: '10px', paddingLeft: '10px' }}>
+                                            <h4>{row["productName"]}</h4>
+                                            <h6>${row["price"].toFixed(2)}</h6>
+                                            <h6>{i }</h6>
+                                            {/*<Button style={{ position: "absolute", right: '15px', bottom: '15px' }} onClick={() => deleteProduct(i)} variant="danger">Delete</Button>*/}
+                                            <Button style={{ position: "absolute", right: '15px', bottom: '15px' }} onClick={() => handleShow(i)} variant="danger">Delete</Button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            )}
+                    </div>
+                    <div class="cartBottomSection">
+                        <h2>total cost: ${totalCost}</h2>
+                    </div>
+
                 </div>
+
+
+
                 <MyVerticallyCenteredModal
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                 />
+                <Modal
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Modal title</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Are you sure you want to remove this item from cart?
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            No!
+                        </Button>
+                        <Button variant="primary" onClick={handleCloseAndDelete}>Yes please!</Button>
+                    </Modal.Footer>
+                </Modal>
                 <button class="shoppingCartButton" onClick={() => showCart()}>
                     <FontAwesomeIcon icon={faShoppingCart} />
                 </button>

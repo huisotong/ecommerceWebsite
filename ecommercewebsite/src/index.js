@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HomePage from './Home/HomePage';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component, useState, useEffect, useLayoutEffect } from 'react';
 
 

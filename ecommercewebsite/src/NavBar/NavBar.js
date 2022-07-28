@@ -15,7 +15,7 @@ const NavBar = () => {
     return (
         <div style={{ height: '40%', width: 'auto',backgroundColor: '#FFD700'}}>
         
-                <h1 style={{ margin:"0px" }}>Shopy!</h1>
+                <h1 style={{ margin:"0px" }}>Shopy! ONE STOCK EACH SALE</h1>
             <div >
                 <a href="/Home">Home</a>
                 <a href="/Opportunities">Opportunities</a>
