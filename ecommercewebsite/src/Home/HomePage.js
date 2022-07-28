@@ -17,7 +17,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import './HomeStyle.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faArrowUpLong } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faArrowUpLong,faCartShopping, faShoppingBag, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -96,7 +96,7 @@ function HomePage() {
     };
     
 
-    
+    //modal
     function MyVerticallyCenteredModal(props) {
 
         return (
@@ -125,24 +125,38 @@ function HomePage() {
                             <quickViewText>
                             <h4>{productList[arrayPosition].productName}</h4>
                             <p>{productList[arrayPosition].description}</p>
+                            <p>sadsa</p>
                             </quickViewText>
                             </topSection>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
-                    {/*<Button onClick={addToCart(arrayPosition)}>Add to Cart</Button>*/}
+                    {/*<Button onClick={props.onHide}>Close</Button>*/}
+                    <Button onClick={() => addToCart(arrayPosition)}>Add to Cart</Button>
                 </Modal.Footer>
             </Modal>
         );
     }
+    //top open up the modal and get the index of chosen product
     function update(index) {
         setModalShow(true)
         setArrayPosition(index);
     }
+    //adds product into shopping cart
     function addToCart(index) {
-        cart.concat(productList[index])
-        
+        cart.push(productList[index])
+    }
+    //show the shopping cart
+    function showCart(){
+    //    document.getElementById("shoppingCart").style.width = "250px";
+        document.getElementById("shoppingCart").style.left = "auto";
+        document.getElementById("shoppingCart").style.right = "0%";
+    }
+    //hide the shopping cart
+    function hideCart(){
+    //    document.getElementById("shoppingCart").style.width = "0px";
+        document.getElementById("shoppingCart").style.left = "100%";
+        document.getElementById("shoppingCart").style.right = "auto";
     }
     return (
         //onSubmit={ilterdata(OppoList)}
@@ -196,10 +210,18 @@ function HomePage() {
                     )}
                 </Row>
                 </div>
+                <div class="shoppingCart" id="shoppingCart">
+                    <div>
+                        <button onClick={() => hideCart()}>lol</button>
+                        </div>
+                </div>
                 <MyVerticallyCenteredModal
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                 />
+                <button class="shoppingCartButton" onClick={() => showCart()}>
+                    <FontAwesomeIcon icon={faShoppingCart} />
+                </button>
                 <button id="scrollUp" class="scrollToTop" onClick={scrollToTop} style={{ opacity: showScrollBtn ? 100 : 0 }}><FontAwesomeIcon icon={faArrowUpLong} class="arrowUp" /></button>
 
                </div>

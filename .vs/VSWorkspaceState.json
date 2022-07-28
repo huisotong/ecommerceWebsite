@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Home"
+    "\\ecommercewebsite",
+    "\\ecommercewebsite\\src",
+    "\\ecommercewebsite\\src\\Home"
   ],
-  "SelectedNode": "\\Home\\HomePage.js",
   "PreviewInSolutionExplorer": false
 }
