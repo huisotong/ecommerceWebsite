@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Home"
+    "\\ecommercewebsite",
+    "\\ecommercewebsite\\src",
+    "\\ecommercewebsite\\src\\Home",
+    "\\ecommercewebsite\\src\\NavBar",
+    "\\ecommercewebsite\\src\\Pictures"
   ],
-  "SelectedNode": "\\Home\\HomePage.js",
+  "SelectedNode": "\\ecommercewebsite\\src\\App.css",
   "PreviewInSolutionExplorer": false
 }
