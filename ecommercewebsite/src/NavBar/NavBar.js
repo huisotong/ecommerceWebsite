@@ -6,14 +6,14 @@ import { React, useState, useEffect } from "react";
 
 
 //import zIndex from '@mui/material/styles/zIndex';
-// <button>About Us</button> 
+// <button>About Us</button> FFD700
 //                <a href="/AboutUs">About Us</a><a href="/ContactUs">Contact Us</a>
 
 const NavBar = () => {
 
 
     return (
-        <div style={{ height: '40%', width: 'auto',backgroundColor: '#FFD700'}}>
+        <div style={{ height: '40%', width: 'auto', backgroundColor: '#FFD700'}}>
         
                 <h1 style={{ margin:"0px" }}>Shopy! ONE STOCK EACH SALE</h1>
             <div >

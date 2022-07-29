@@ -42,6 +42,7 @@ import { faStar, faArrowUpLong,faCartShopping, faShoppingBag, faShoppingCart,faX
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { pink } from "@mui/material/colors";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, Outlet, } from 'react-router-dom';
 
 
 
@@ -50,23 +51,23 @@ function HomePage() {
     //testData
     const productList = [
         { productID: 329839, productName: 'Minion fries', price: 50.00, rating: 3, description: 'The only few minion fries', seller: 'MacRonald', amtSold: 5, amtAvailable: 10, productType: 'Food', picturePath: Minions },
-        { productID: 439823, productName: 'Shirt', price: 7.80, rating: 5, description: 'The perfect gift for a programmer to wear!', seller: 'Dave', amtSold: 3, amtAvailable: 10, productType: 'Clothes', picturePath: Shirt },
+        { productID: 439823, productName: 'Shirt', price: 7.00, rating: 5, description: 'The perfect gift for a programmer to wear!', seller: 'Dave', amtSold: 3, amtAvailable: 10, productType: 'Clothes', picturePath: Shirt },
         { productID: 483923, productName: 'Cat stickers', price: 1.00, rating: 4, description: 'Perfect for decoration!', seller: 'Catto Inc', amtSold: 2730, amtAvailable: 4000, productType: 'Supplies', picturePath: CatStickers },
         { productID: 984357, productName: 'Cat Plushie', price: 46.00, rating: 5, description: 'Pawesome gifts!', seller: 'Pusheen', amtSold: 23, amtAvailable: 2000, productType: 'Toys', picturePath: CatPlushie },
         { productID: 493234, productName: 'Frog Eye Mask', price: 4.00, rating: 4, description: 'Perfect for sleeping! Eyes can be opened or closed.', seller: 'PepeFroggie', amtSold: 23, amtAvailable: 2000, productType: 'Accessories', picturePath: PepeMask },
         { productID: 329839, productName: 'Octopus Plushie', price: 5.00, rating: 5, description: 'Great for expressing you mood!', seller: 'Ariel', amtSold: 5, amtAvailable: 10, productType: 'Toys', picturePath: OctopusMood },
-        { productID: 984357, productName: 'Mopiko', price: 1.40, rating: 4, description: 'Pawesome gifts!', seller: 'Pusheen', amtSold: 23, amtAvailable: 2000, productType: 'Toys', picturePath: Mopiko },
-        { productID: 493234, productName: 'Pocky', price: 2.30, rating: 5, description: 'The perfect balance of high quality creamy chocolate and the crunch of a biscuit stick gives Pocky its irresistible taste.', seller: 'PepeFroggie', amtSold: 23, amtAvailable: 2000, productType: 'Food', picturePath: Pocky },
-        { productID: 329839, productName: 'Towel Paper', price: 10.70, rating: 2, description: 'The only few minion fries', seller: 'MacRonald', amtSold: 5, amtAvailable: 10, productType: 'Supplies', picturePath: TowelPaper },
+        { productID: 984357, productName: 'Mopiko', price: 1.00, rating: 4, description: 'Pawesome gifts!', seller: 'Pusheen', amtSold: 23, amtAvailable: 2000, productType: 'Toys', picturePath: Mopiko },
+        { productID: 493234, productName: 'Pocky', price: 2.00, rating: 5, description: 'The perfect balance of high quality creamy chocolate and the crunch of a biscuit stick gives Pocky its irresistible taste.', seller: 'PepeFroggie', amtSold: 23, amtAvailable: 2000, productType: 'Food', picturePath: Pocky },
+        { productID: 329839, productName: 'Towel Paper', price: 10.00, rating: 2, description: 'The only few minion fries', seller: 'MacRonald', amtSold: 5, amtAvailable: 10, productType: 'Supplies', picturePath: TowelPaper },
         { productID: 439823, productName: 'Socks', price: 1.00, rating: 2, description: 'Socks used with love', seller: 'Dave', amtSold: 3, amtAvailable: 10, productType: 'Clothes', picturePath: Socks },
-        { productID: 483923, productName: 'Mamee Monster', price: 0.80, rating: 5, description: 'Ideal for snack time!', seller: 'Catto Inc', amtSold: 2730, amtAvailable: 4000, productType: 'Food', picturePath: MameeMonster },
-        { productID: 984357, productName: 'London Choco Roll', price: 5.40, rating: 4, description: 'London Choco Roll~ London Choco Roll~', seller: 'Pusheen', amtSold: 23, amtAvailable: 2000, productType: 'Food', picturePath: LondonChocoRoll },
-        { productID: 493234, productName: 'Haw Flakes', price: 46, rating: 4, description: 'Yummy snack from your childhood!', seller: 'PepeFroggie', amtSold: 23, amtAvailable: 2000, productType: 'Food', picturePath: HawFlakes },
-        { productID: 329839, productName: 'Eye Mo Drops', price: 3.60, rating: 3, description: 'Great for dry eyes', seller: 'MacRonald', amtSold: 5, amtAvailable: 10, productType: 'Food', picturePath: EyeMo },
+        { productID: 483923, productName: 'Mamee Monster', price: 1.00, rating: 5, description: 'Ideal for snack time!', seller: 'Catto Inc', amtSold: 2730, amtAvailable: 4000, productType: 'Food', picturePath: MameeMonster },
+        { productID: 984357, productName: 'London Choco Roll', price: 60.00, rating: 4, description: 'London Choco Roll~ London Choco Roll~', seller: 'Pusheen', amtSold: 23, amtAvailable: 2000, productType: 'Food', picturePath: LondonChocoRoll },
+        { productID: 493234, productName: 'Haw Flakes', price: 46.00, rating: 4, description: 'Yummy snack from your childhood!', seller: 'PepeFroggie', amtSold: 23, amtAvailable: 2000, productType: 'Food', picturePath: HawFlakes },
+        { productID: 329839, productName: 'Eye Mo Drops', price: 3.00, rating: 3, description: 'Great for dry eyes', seller: 'MacRonald', amtSold: 5, amtAvailable: 10, productType: 'Food', picturePath: EyeMo },
         { productID: 439823, productName: 'Yu Yee Oil', price: 1.00, rating: 2, description: 'Socks used with love', seller: 'Dave', amtSold: 3, amtAvailable: 10, productType: 'Clothes', picturePath: YuYeeOil },
         { productID: 483923, productName: 'Old Town Coffee', price: 1.00, rating: 4, description: 'Perfect for decoration!', seller: 'Catto Inc', amtSold: 2730, amtAvailable: 4000, productType: 'Supplies', picturePath: OldTownCoffee },
-        { productID: 984357, productName: 'Panadol', price: 46, rating: 4, description: 'Pawesome gifts!', seller: 'Pusheen', amtSold: 23, amtAvailable: 2000, productType: 'Toys', picturePath: Panadol },
-        { productID: 493234, productName: 'Salonpas', price: 46, rating: 4, description: 'Perfect for sleeping! Eyes can be opened or closed.', seller: 'PepeFroggie', amtSold: 23, amtAvailable: 2000, productType: 'Accessories', picturePath: Salonpas },
+        { productID: 984357, productName: 'Panadol', price: 46.00, rating: 4, description: 'Pawesome gifts!', seller: 'Pusheen', amtSold: 23, amtAvailable: 2000, productType: 'Toys', picturePath: Panadol },
+        { productID: 493234, productName: 'Salonpas', price: 46.00, rating: 4, description: 'Perfect for sleeping! Eyes can be opened or closed.', seller: 'PepeFroggie', amtSold: 23, amtAvailable: 2000, productType: 'Accessories', picturePath: Salonpas },
         { productID: 329839, productName: 'Zam-Buk', price: 50.00, rating: 3, description: 'The only few minion fries', seller: 'MacRonald', amtSold: 5, amtAvailable: 10, productType: 'Food', picturePath: ZamBuk },
         { productID: 439823, productName: 'Cotton Bud', price: 1.00, rating: 2, description: 'Socks used with love', seller: 'Dave', amtSold: 3, amtAvailable: 10, productType: 'Clothes', picturePath: CottonBud },
         { productID: 483923, productName: 'Milo', price: 1.00, rating: 4, description: 'Perfect for decoration!', seller: 'Catto Inc', amtSold: 2730, amtAvailable: 4000, productType: 'Supplies', picturePath: Milo },
@@ -89,7 +90,7 @@ function HomePage() {
     const [show, setShow] = useState(false);
     const [indexCartDelete, setIndexCartDelete] = useState(0);
 
-
+    
     useEffect(() => {
         window.addEventListener('scroll', scrollAppear);
     }, []);
@@ -205,11 +206,24 @@ function HomePage() {
     }
     const [totalCost, setTotalCost] = useState(0);
     useEffect(() => {
+        
         let add=0;
         for (var i = 0; i < cart.length; i++) {
             add += parseInt(cart[i].price.toFixed(2))
             setTotalCost(add.toFixed(2))
             
+        }
+    });
+    useEffect(() => {
+        
+        if (cart.length !== 0) {
+            document.getElementById("shoppingCartButton").style.animation = "shoppingCartButton 1s ease infinite"
+            /*document.getElementById("shoppingCartButton").removeAttribute("backgroundColor")*/
+            /*document.getElementById("shoppingCartButton").style.boxShadow = null*/
+        } else {
+            /*document.getElementById("shoppingCartButton").removeAttribute("animation");*/
+            document.getElementById("shoppingCartButton").style.animation = "shoppingCartButtonStop 1s ease infinite"
+
         }
     });
     
@@ -230,11 +244,11 @@ function HomePage() {
         
     }
     return (
-        //onSubmit={ilterdata(OppoList)}
-        //
-        //class="oppoNFavTitle"
+        //onSubmit={ilterdata(OppoList)}FBD9D9
+        //FBD9D9 backgroundColor:'#f5f5f5'
+        //class="oppoNFavTitle", boxShadow:' 0 1px 0 #000 inset'
 
-        <div className="App" style={{ backgroundColor:'#f5f5f5'}}>
+        <div className="App" style={{ backgroundColor:'#FBD9D9'}}>
             {/*<InternNavBar />*/}
 
             <NavBar  />
@@ -242,17 +256,15 @@ function HomePage() {
                 <h1>Products</h1>
                 {/*{cart.map((row, key) => <h1 >{productList[0].productName}</h1>)}*/}
                 <h1 >{cart.length}</h1>
-                <div class="myDIV">Hover over me.</div>
-                <div class="hide">I am shown when someone hovers over the div above.</div>
-
+                
                 <div class="productsWidth">
                     <Row style={{ width: '80%',marginLeft:'10%'}}>
                         {productList.map((row, index,key) =>
                             
                             <Col xs={4} md={3} >
-                                <Card className ="productsCard" >
+                                <Card className="productsCard" style={{ }}>
                                     <Card.Img variant="top" src={row["picturePath"]} />
-                                    <Card.Body style={{ textAlign: 'left', paddingTop: '5px', paddingLeft: '10px' }}>
+                                    <Card.Body style={{ textAlign: 'left', paddingTop: '5px', paddingLeft: '10px'   }}>
                                         <Card.Title style={{ fontSize: '17px', marginBottom: '5px' }}>{row["productName"]}</Card.Title>
                                         <Card.Text>
                                             <div style={styles.stars}>
@@ -312,7 +324,15 @@ function HomePage() {
                             )}
                     </div>
                     <div class="cartBottomSection">
-                        <h2>total cost: ${totalCost}</h2>
+                        <div class="cartBottomSectionLeft">
+                            {/*<p>Total: ${totalCost}</p>*/}
+                            <button class="totalPrice" disabled><p>Total: ${totalCost}</p></button>
+                        </div>
+                        <div class="cartBottomSectionRight">
+                            {/*<Link style={{ textDecoration: 'none', color: 'inherit' }} to='/CheckOut'><button class="checkOutButton">Check Out</button></Link>*/}
+                            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/CheckOut"  ><button class="checkOutButton">Check Out</button></Link>
+                            
+                            </div>
                     </div>
 
                 </div>
@@ -342,7 +362,8 @@ function HomePage() {
                         <Button variant="primary" onClick={handleCloseAndDelete}>Yes please!</Button>
                     </Modal.Footer>
                 </Modal>
-                <button class="shoppingCartButton" onClick={() => showCart()}>
+                
+                <button class="shoppingCartButton" onClick={() => showCart()} id='shoppingCartButton'>
                     <FontAwesomeIcon icon={faShoppingCart} />
                 </button>
                 <button id="scrollUp" class="scrollToTop" onClick={scrollToTop} style={{ opacity: showScrollBtn ? 100 : 0 }}><FontAwesomeIcon icon={faArrowUpLong} class="arrowUp" /></button>

@@ -33,9 +33,9 @@
     margin: 10px;
     padding: 0px;
     border-radius: 1px;
-    border:0px;
-    background-color:white;
-    position:relative;
+    border: 0px;
+    background-color: white;
+    position: relative;
 }
 
     .productsCard:hover .productCardQuickView {
@@ -50,6 +50,7 @@
     } .productsCard:hover  {
         display: block;
         outline: 1px solid lightcoral;
+
     }
 quickViewContents {
     content: "";
@@ -92,14 +93,34 @@ quickViewText {
     background-color: lightcoral;
     /*box-shadow: 0 0 20px lightcoral;*/
     box-shadow: 0 6px 10px 0 lightcoral;
-    transition: 0.2s
-}
+    transition: 0.2s;
+/*    animation: shoppingCartButton 1s ease infinite;
+*/}
+    @keyframes shoppingCartButton {
+        15% {transform: scale(1.2);}
+        40%,60% {transform: rotate(-20deg) scale(1.2);}
+        50% {transform: rotate(20deg) scale(1.2);}
+        75% {transform: rotate(0deg) scale(1.2);}
+        100% {transform: scale(1);}
+    }
+    @keyframes shoppingCartButtonStop {
+        
+    }
     .shoppingCartButton:hover {
         transform: scale(0.99);
         /*box-shadow: 0 2px 15px 0 lightcoral;*/
-
         box-shadow: 0 0 0 0 lightcoral;
+
     }
+
+
+    /*.shoppingCartButtonNoti:hover {
+        transform: scale(0.99);*/
+        /*box-shadow: 0 2px 15px 0 lightcoral;*/
+
+        /*box-shadow: 0 0 0 0 lightcoral;
+    }*/
+
 
 .shoppingCart {
     height: 100%;
@@ -107,11 +128,16 @@ quickViewText {
     position: fixed;
     z-index: 100;
     top: 0;
-    right:-50%;
+    right: -50%;
     /*right:-20%;*/
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5;*/
+    /*background-color: #FEF2F2;*/
+    background-color: #FCE6E6;
     overflow-x: hidden;
     transition: 0.5s;
+    outline: 2px solid #F5A6A6;
+    border-bottom-left-radius:16px;
+    border-top-left-radius:16px;
     /*padding-top: 60px;*/
 }
 .cartTopSection {
@@ -120,7 +146,7 @@ quickViewText {
     z-index: 100;
     top:0;
     transition: 0.5s;
-    background-color: aquamarine;
+    /*background-color: aquamarine;*/
 }
 .cartCloseButton {
     margin-right: 80%;
@@ -129,16 +155,16 @@ quickViewText {
 
 
 .cartMiddleSection {
-    
     width: auto;
-    height: 85%;
-    overflow:auto;
+    height: 86%;
+    overflow: auto;
+    
 }
 .cartBottomSection {
-    background-color: red;
+    /*background-color: red;*/
     width: auto;
     bottom:0%;
-    height: 8%;
+    height: 7%;
 }
 /*Datatable========================================================================================================================*/
 .singleCardInCart {
@@ -150,7 +176,6 @@ quickViewText {
     float: left;
     width: 96%;
     transition: all 0.3s ease 0s;
-    display: flex;
     flex-direction: column;
     height: 100px;
     margin-top: 10px;
@@ -180,4 +205,38 @@ quickViewText {
     width: calc(100% - 100px);
     height: 100px;
     position:relative;
+}
+.cartBottomSectionLeft {
+    background-color: red;
+    /*background-color: #FCE6E6;*/
+    float: left;
+    /*width: 230px;*/
+    width: 250px;
+    height: 100%;
+    text-align:center;
+    line-height:100%
+    
+}
+.cartBottomSectionRight {
+    background-color: #F39999;
+    float: left;
+    /*width: 230px;*/
+    width: calc(100% - 250px);
+    height: 100%;
+}
+.checkOutButton {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    background-color: #784040;
+    color: white;
+    font-weight: 700;
+}
+.totalPrice {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    color: white;
+    font-weight: 700;
+    font-size:30px;
 }

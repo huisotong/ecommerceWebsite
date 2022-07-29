@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HomePage from './Home/HomePage';
+import CheckOut from './Home/CheckOut';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component, useState, useEffect, useLayoutEffect } from 'react';
 
@@ -15,6 +16,7 @@ root.render(
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="/home" element={<HomePage />} />
+            <Route path="/CheckOut" element={<CheckOut />} />
         </Routes>
     </Router>
 );
