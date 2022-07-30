@@ -33,4 +33,3 @@ root.render(
     </Router>,
     root
 );
-//<h2>Picure of logo with "login" button</h2>

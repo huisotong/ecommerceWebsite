@@ -160,18 +160,15 @@ function HomePage() {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    {/*<Button onClick={props.onHide}>Close</Button>*/}
                     <Button onClick={() => addToCart(arrayPosition)}>Add to Cart</Button>
                 </Modal.Footer>
             </Modal>
         );
     }
-    //top open up the modal and get the index of chosen product
     function update(index) {
         setModalShow(true)
         setArrayPosition(index);
     }
-    //adds product into shopping cart
     function addToCart(index) {
         if (findCart(cart, productList[index].productID)) {
             cart.push(productList[index])
@@ -181,14 +178,10 @@ function HomePage() {
         }
         
     }
-    //show the shopping cart
     function showCart(){
-    //    document.getElementById("shoppingCart").style.width = "250px";
         document.getElementById("shoppingCart").style.right = "0%";
     }
-    //hide the shopping cart
     function hideCart(){
-    //    document.getElementById("shoppingCart").style.width = "0px";
         document.getElementById("shoppingCart").style.right = "-50%";
     }
 
@@ -197,7 +190,6 @@ function HomePage() {
         var check = true;
         for (var i = 0; i < arr.length; i++) {
             if (arr[i].productID === find) {
-                // __FOUND is set to the index of the element
                 check = false
                 break;
             }
@@ -218,18 +210,13 @@ function HomePage() {
         
         if (cart.length !== 0) {
             document.getElementById("shoppingCartButton").style.animation = "shoppingCartButton 1s ease infinite"
-            /*document.getElementById("shoppingCartButton").removeAttribute("backgroundColor")*/
-            /*document.getElementById("shoppingCartButton").style.boxShadow = null*/
         } else {
-            /*document.getElementById("shoppingCartButton").removeAttribute("animation");*/
             document.getElementById("shoppingCartButton").style.animation = "shoppingCartButtonStop 1s ease infinite"
 
         }
     });
     
     
-    //const handleClose = () => setShow(false);
-    //const handleShow = () => setShow(true);
     function handleShow(index) {
         setShow(true)
         setIndexCartDelete(index)
@@ -244,18 +231,11 @@ function HomePage() {
         
     }
     return (
-        //onSubmit={ilterdata(OppoList)}FBD9D9
-        //FBD9D9 backgroundColor:'#f5f5f5'
-        //class="oppoNFavTitle", boxShadow:' 0 1px 0 #000 inset' background-image: linear-gradient(to bottom right, red, #333333);
 
         <div className="App" style={{ backgroundImage:'linear-gradient(to bottom right, #808080, black)'}}>
-            {/*<InternNavBar />*/}
 
             <NavBar  />
             <div className="main">
-                {/*<h1>Products</h1>*/}
-                {/*{cart.map((row, key) => <h1 >{productList[0].productName}</h1>)}*/}
-                {/*<h1 >{cart.length}</h1>*/}
                 
                 <div class="productsWidth">
                     <Row style={{ width: '80%',marginLeft:'10%'}}>
@@ -296,13 +276,11 @@ function HomePage() {
                 </div>
                 <div className="shoppingCart" id="shoppingCart">
                     <div class="cartTopSection">
-                        {/*<button class="cartCloseButton" onClick={() => hideCart()}><FontAwesomeIcon icon={faXmark} size='2xl'>lol</FontAwesomeIcon></button>*/}
                         <CloseButton className="cartCloseButton"  onClick={() => hideCart()}/>
                     </div>
 
                     <div class="cartMiddleSection">
                         
-                        {/*<CartDatatable data={cart}/>*/}
                         {
                             cart.map((row, i, key) =>
                                 <div class="singleCardInCart">
@@ -325,11 +303,9 @@ function HomePage() {
                     </div>
                     <div class="cartBottomSection">
                         <div class="cartBottomSectionLeft">
-                            {/*<p>Total: ${totalCost}</p>*/}
                             <button class="totalPrice" disabled><p>Total: ${totalCost}</p></button>
                         </div>
                         <div class="cartBottomSectionRight">
-                            {/*<Link style={{ textDecoration: 'none', color: 'inherit' }} to='/CheckOut'><button class="checkOutButton">Check Out</button></Link>*/}
                             <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/CheckOut"  ><button class="checkOutButton">Check Out</button></Link>
                             
                             </div>
@@ -377,10 +353,4 @@ function HomePage() {
 
     );
 }
-//OppoViewFormat LoggedDatatable OppoCardsFormat className="g-4"
-//isVisible ? 'opacity-100' : 'opacity-0'
-//opacity: showScrollBtn ? 100 : 0 
-//opacity: showScrollBtn ? 100 : 0 
-//<Datatable data={search(OppoList)} />
-//<Datatable data={typeBox(search(OppoList))} />
 export default HomePage;

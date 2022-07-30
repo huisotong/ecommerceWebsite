@@ -6,7 +6,6 @@ body {
 .navbar {
     height: 100px;
     width: 100%;
-    /*background-color: #FBD9D9;*/
     background-color: lightcoral;
     border-bottom: 1px solid black;
 }

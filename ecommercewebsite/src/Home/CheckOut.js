@@ -2,62 +2,23 @@
 import { React, useState, useEffect } from "react";
 import NavBar from '../NavBar/NavBar';
 import Minions from '../Pictures/Minions.jpg';
-import Socks from '../Pictures/Socks.jpg';
-import CatStickers from '../Pictures/CatStickers.jpeg';
-import CatPlushie from '../Pictures/CatPlushie.jpg';
 import PepeMask from '../Pictures/PepeMask.jpg';
-import OctopusMood from '../Pictures/OctopusMood.jpg';
-import Mopiko from '../Pictures/Mopiko.jpg';
-import Pocky from '../Pictures/Pocky.jpg';
-import TowelPaper from '../Pictures/TowelPaper.jpg';
-import Cup from '../Pictures/Cup.jpg';
 import Shirt from '../Pictures/Shirt.jpg';
-import MameeMonster from '../Pictures/MameeMonster.jpg';
-import LondonChocoRoll from '../Pictures/LondonChocoRoll.jpg';
-import HawFlakes from '../Pictures/HawFlakes.jpg';
-import EyeMo from '../Pictures/EyeMo.jpg';
-import YuYeeOil from '../Pictures/YuYeeOil.jpg';
-import OldTownCoffee from '../Pictures/OldTownCoffee.jpg';
-import Panadol from '../Pictures/Panadol.png';
-import Salonpas from '../Pictures/Salonpas.jpg';
-import ZamBuk from '../Pictures/ZamBuk.jpg';
-import CottonBud from '../Pictures/CottonBud.jpg';
 import Milo from '../Pictures/Milo.jpg';
-import Broccoli from '../Pictures/Broccoli.jpg';
-import MaMaLemon from '../Pictures/MaMaLemon.jpg';
 
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
-import Carousel from 'react-bootstrap/Carousel';
-import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 
 import './CheckOutStyle.css';
 import '../NavBar/NavBarStyle.css';
-import CartDatatable from './CartDatatable';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faArrowUpLong,faCartShopping, faShoppingBag, faShoppingCart,faXmark,faCircleXmark , faCheck,faSpinner} from "@fortawesome/free-solid-svg-icons";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { pink } from "@mui/material/colors";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useLocation } from 'react-router-dom'
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import InputGroup from 'react-bootstrap/InputGroup';
 
 
 
 function CheckOut() {
-    //testData
-    //const location = useLocation()
-    //const { from } = location.state
-    /*const { totalAmt } = location.state*/
-    //button to scrol up
     const [show, setShow] = useState(false);
     const [validated, setValidated] = useState(false);
     const handleSubmit = (event) => {
@@ -108,61 +69,24 @@ function CheckOut() {
         }
     }
     function showCart() {
-        //    document.getElementById("shoppingCart").style.width = "250px";animation: out 1s ease 0.5s 1 normal forwards       out 1s ease
         document.getElementById("paymentSection").style.animation = "out 1s ease 0.5s 1 normal forwards";
-        //document.getElementById("paymentForm").style.animation = "out 1s ease 0.5s 1 normal forwards";
-        //document.getElementById("form").style.animation = "form 1s ease 0.5s 1 normal forwards";
         
-        //document.getElementById("paymentForm").style.transition = "display 2s";
-        //document.getElementById("paymentForm").style.display = "none";
     }
-    //hide the shopping cart
     function hideCart() {
-        //    document.getElementById("shoppingCart").style.width = "0px";
         document.getElementById("paymentForm").style.right = "-50%";
     }
-    /*const { data } = this.props.location.data*/
+    
     return (
-        //onSubmit={ilterdata(OppoList)}{/*<ProgressBar animated now={45} />*/}
-        //FBD9D9 backgroundColor:'#f5f5f5'
-        //class="oppoNFavTitle", boxShadow:' 0 1px 0 #000 inset'style={{ backgroundColor:'#f5f5f5'}}
+        
 
         <div className="App" style={{ backgroundImage: 'linear-gradient(to bottom right, #808080, black)' }} >
-            {/*<InternNavBar />*/}
 
             <NavBar  />
             <div class="whole">
             `    
                 <checkOut>
                     <top>
-                        {/*<div class='progressBar'>*/}
-                        {/*    <div class='selectedProduct'>*/}
-                        {/*        <span class='circle'><FontAwesomeIcon  icon={faSpinner} size='2xl' style={{textAlign:"center",height:'70%',padding:'15%',width:'70%'}}></FontAwesomeIcon></span>*/}
-                        {/*        <h4>Selected Product</h4>*/}
-                            
-                        {/*    </div>*/}
-                        {/*    <div class='payment'>*/}
-                        {/*        <span class='circle'><FontAwesomeIcon icon={faCheck} size='2xl' style={{ textAlign: "center", height: '70%', padding: '15%', width: '70%' }}></FontAwesomeIcon></span>*/}
-                        {/*        <h4>Payment</h4>*/}
-
-                        {/*    </div>*/}
-                        {/*    <div class='placeOrder'>*/}
-                        {/*        <span class='circle'><FontAwesomeIcon icon={faCheck} size='2xl' style={{ textAlign: "center", height: '70%', padding: '15%', width: '70%' }}></FontAwesomeIcon></span>*/}
-                        {/*        <h4>Place Order</h4>*/}
-
-                        {/*    </div>*/}
-                        {/*</div>*/}
                     </top>
-                    {/*<paymentSection id='paymentSection'>*/}
-                    {/*    <div className='paymentForm'id='paymentForm'>*/}
-                            
-                    {/*            <button   onClick={()=>showCart()} >*/}
-                    {/*                Submit*/}
-                    {/*            </button>*/}
-                            
-                    {/*    </div>*/}
-                    {/*</paymentSection>*/}
-                    {/*<div style={{ display: "none" }}/>*/}
                     <left>
                         <div class="Products" style={{ textAlign: 'left' }}>
                             <h2>Products Ordered</h2>
@@ -185,48 +109,6 @@ function CheckOut() {
                         
                     </left>
                     <right>
-                        {/*<div class="OrderSummary" style={{ textAlign: 'left' }}>*/}
-                        {/*    */}{/*<h2>Form</h2>*/}
-                        {/*    */}{/*<h5>Payment Method:</h5>*/}
-                        {/*    */}{/*<h5>Delivery: $1.90</h5>*/}
-                        {/*    */}{/*<hr />*/}
-                        {/*    */}{/*<h3>Total: $45.80</h3>*/}
-                        {/*    <Form>*/}
-                        {/*        <Form.Group className="mb-3" >*/}
-                        {/*            <Form.Label>Card Number</Form.Label>*/}
-                        {/*            <Form.Control placeholder="Enter Card Number" required/>*/}
-                        {/*        </Form.Group>*/}
-                        {/*        <Row className="mb-3">*/}
-                        {/*        <Form.Group as={Col} md="6" className="mb-3" >*/}
-                        {/*            <Form.Label>Expiry Date</Form.Label>*/}
-                        {/*                <Form.Control placeholder="Enter Expiry Date" required/>*/}
-                        {/*        </Form.Group>*/}
-                        {/*        <Form.Group as={Col} md="4" className="mb-3">*/}
-                        {/*            <Form.Label>CVV</Form.Label>*/}
-                        {/*                <Form.Control placeholder="Enter CVV" type="password" required/>*/}
-                        {/*            </Form.Group>*/}
-                        {/*            </Row>*/}
-                        {/*        <Form.Group className="mb-3">*/}
-                        {/*            <Form.Label>Name On Card</Form.Label>*/}
-                        {/*            <Form.Control placeholder="Enter Name On Card" required/>*/}
-                        {/*        </Form.Group>*/}
-                        {/*        <Form.Group className="mb-3">*/}
-                        {/*            <Form.Label>Billing Address</Form.Label>*/}
-                        {/*            <Form.Control placeholder="Enter Billing Address" required/>*/}
-                        {/*        </Form.Group>*/}
-                        {/*        <Form.Group className="mb-3">*/}
-                        {/*            <Form.Label>Postal Code</Form.Label>*/}
-                        {/*            <Form.Control placeholder="Enter Postal Code" required />*/}
-                        {/*        </Form.Group>*/}
-                                
-                        {/*        */}{/*<Button variant="primary" type="submit">*/}
-                        {/*        */}{/*    Submit*/}
-                        {/*        */}{/*</Button>*/}
-                        {/*        <Form.Text className="text-muted">*/}
-                        {/*            Your credit card information will be kept a secret:)*/}
-                        {/*        </Form.Text>*/}
-                        {/*    </Form>*/}
-                        {/*</div>*/}
                         <div class="OrderSummary" style={{textAlign:'left'}}>
                             <h2>Order</h2>
                             
@@ -234,13 +116,11 @@ function CheckOut() {
                             <h5>Delivery: $1.90</h5>
                             <hr />
                             <h3>Total: $45.80</h3>
-                            {/*<button class="btn btn-primary">Place Order</button>*/}
                             <Button variant="primary" onClick={handleShow}>
                                 Enter payment details
                             </Button>
                         </div>
                         </right>
-                       {/* </div>*/}
 
                 </checkOut>
 
@@ -287,9 +167,6 @@ function CheckOut() {
                             <Form.Control placeholder="Enter Postal Code" required onChange={(e) => setPostal(e.target.value)}/>
                         </Form.Group>
 
-                        {/*<Button variant="primary" type="submit">*/}
-                        {/*    Submit*/}
-                        {/*</Button>*/}
                         <Form.Text className="text-muted">
                             Your credit card information will be kept a secret:)
                         </Form.Text>
@@ -300,7 +177,6 @@ function CheckOut() {
 
                     </Button>
                         <Button variant="primary" type="submit">Place order</Button>
-                    {/*    <Button type="submit">Submit form</Button>*/}
                     </Form>
                 </Modal.Body>
             </Modal>
@@ -310,10 +186,4 @@ function CheckOut() {
 
     );
 }
-//OppoViewFormat LoggedDatatable OppoCardsFormat className="g-4"
-//isVisible ? 'opacity-100' : 'opacity-0'
-//opacity: showScrollBtn ? 100 : 0 
-//opacity: showScrollBtn ? 100 : 0 
-//<Datatable data={search(OppoList)} />
-//<Datatable data={typeBox(search(OppoList))} />
 export default CheckOut;

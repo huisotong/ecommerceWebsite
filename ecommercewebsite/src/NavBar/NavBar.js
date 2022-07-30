@@ -8,15 +8,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-//import zIndex from '@mui/material/styles/zIndex';FBD9D9
-// <button>About Us</button> FFD700
-//                <a href="/AboutUs">About Us</a><a href="/ContactUs">Contact Us</a>
 
 const NavBar = () => {
 
 
     return (
-        //<div style={{ height: '100%', width: 'auto', backgroundColor: 'lightcoral'}}>
         <div class='navbar' >
             <div style={{ width: '50%' ,height:'100%'}}>
                 <h1 style={{ margin: "0px", fontFamily: 'Concert One', paddingLeft: '8%', paddingTop:'2%'}}>ezShopy! ONE STOCK EACH SALE!!</h1></div>
