@@ -16,9 +16,9 @@
     box-shadow: 0 0 20px rgba(0,0,0,0.30);
 }
 .arrowUp {
-    color: purple;
-    height: 25px;
-    width: 25px;
+    
+    /*height: 25px;
+    width: 25px;*/
 }
 .productCardQuickView {
     background-color: lightcoral;
@@ -244,4 +244,23 @@ quickViewText {
     color: white;
     font-weight: 700;
     font-size:30px;
+}
+
+.scrollUp {
+    position: fixed;
+    bottom: 5%;
+    left: 2%;
+    z-index: 20;
+    border: none;
+    border-radius: 18px;
+    width: 70px;
+    height: 70px;
+    /*width: 500px;
+    height: 500px;*/
+    background-color: lightcoral;
+    /*box-shadow: 0 0 20px lightcoral;*/
+    box-shadow: 0 6px 10px 0 lightcoral;
+    transition: 0.2s;
+    /*    animation: shoppingCartButton 1s ease infinite;
+*/
 }

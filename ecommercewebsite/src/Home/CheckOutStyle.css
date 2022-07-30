@@ -14,7 +14,7 @@
     margin-right: 10%;
     margin-left: 10%;
     overflow: auto;
-    height: 1000px;
+    height: 100vh;
 }
 checkOut::after {
     content: "";

@@ -366,7 +366,7 @@ function HomePage() {
                 <button class="shoppingCartButton" onClick={() => showCart()} id='shoppingCartButton'>
                     <FontAwesomeIcon icon={faShoppingCart} size='xl' id='cartIcon'/>
                 </button>
-                <button id="scrollUp" class="scrollToTop" onClick={scrollToTop} style={{ opacity: showScrollBtn ? 100 : 0 }}><FontAwesomeIcon icon={faArrowUpLong} class="arrowUp" /></button>
+                <button id="scrollUp" class="scrollUp" onClick={scrollToTop} style={{ opacity: showScrollBtn ? 100 : 0 }}><FontAwesomeIcon icon={faArrowUpLong} class="arrowUp" size="2xl"/></button>
 
                </div>
 

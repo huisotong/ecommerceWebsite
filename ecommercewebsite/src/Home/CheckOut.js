@@ -127,7 +127,7 @@ function CheckOut() {
         //FBD9D9 backgroundColor:'#f5f5f5'
         //class="oppoNFavTitle", boxShadow:' 0 1px 0 #000 inset'style={{ backgroundColor:'#f5f5f5'}}
 
-        <div className="App" >
+        <div className="App" style={{ backgroundImage: 'linear-gradient(to bottom right, #808080, black)' }} >
             {/*<InternNavBar />*/}
 
             <NavBar  />
