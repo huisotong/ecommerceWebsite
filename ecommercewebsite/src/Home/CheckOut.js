@@ -36,6 +36,7 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 
 import './CheckOutStyle.css';
+import '../NavBar/NavBarStyle.css';
 import CartDatatable from './CartDatatable';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

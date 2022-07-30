@@ -246,16 +246,16 @@ function HomePage() {
     return (
         //onSubmit={ilterdata(OppoList)}FBD9D9
         //FBD9D9 backgroundColor:'#f5f5f5'
-        //class="oppoNFavTitle", boxShadow:' 0 1px 0 #000 inset'
+        //class="oppoNFavTitle", boxShadow:' 0 1px 0 #000 inset' background-image: linear-gradient(to bottom right, red, #333333);
 
-        <div className="App" style={{ backgroundColor:'#FBD9D9'}}>
+        <div className="App" style={{ backgroundImage:'linear-gradient(to bottom right, #808080, black)'}}>
             {/*<InternNavBar />*/}
 
             <NavBar  />
             <div className="main">
-                <h1>Products</h1>
+                {/*<h1>Products</h1>*/}
                 {/*{cart.map((row, key) => <h1 >{productList[0].productName}</h1>)}*/}
-                <h1 >{cart.length}</h1>
+                {/*<h1 >{cart.length}</h1>*/}
                 
                 <div class="productsWidth">
                     <Row style={{ width: '80%',marginLeft:'10%'}}>
@@ -350,7 +350,7 @@ function HomePage() {
                     keyboard={false}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal title</Modal.Title>
+                        <Modal.Title>Delete Product?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         Are you sure you want to remove this item from cart?
@@ -364,7 +364,7 @@ function HomePage() {
                 </Modal>
                 
                 <button class="shoppingCartButton" onClick={() => showCart()} id='shoppingCartButton'>
-                    <FontAwesomeIcon icon={faShoppingCart} />
+                    <FontAwesomeIcon icon={faShoppingCart} size='xl' id='cartIcon'/>
                 </button>
                 <button id="scrollUp" class="scrollToTop" onClick={scrollToTop} style={{ opacity: showScrollBtn ? 100 : 0 }}><FontAwesomeIcon icon={faArrowUpLong} class="arrowUp" /></button>
 
