@@ -33,12 +33,13 @@ import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import CloseButton from 'react-bootstrap/CloseButton';
+import Form from 'react-bootstrap/Form';
 
 import './CheckOutStyle.css';
 import CartDatatable from './CartDatatable';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faArrowUpLong,faCartShopping, faShoppingBag, faShoppingCart,faXmark,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faArrowUpLong,faCartShopping, faShoppingBag, faShoppingCart,faXmark,faCircleXmark , faCheck,faSpinner} from "@fortawesome/free-solid-svg-icons";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { pink } from "@mui/material/colors";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,7 +47,7 @@ import { useLocation } from 'react-router-dom'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 
@@ -56,6 +57,28 @@ function CheckOut() {
     //const { from } = location.state
     /*const { totalAmt } = location.state*/
     //button to scrol up
+    const [show, setShow] = useState(false);
+    const [validated, setValidated] = useState(false);
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        processOrder()
+    };
+    function processOrder() {
+        setValidated(true);
+        alert("$45.80 has been deducted on card number: \n" + cardNo + "\nItem will be mailed to: \n"+address +"\n"+ postal)
+        
+    }
+    const [cardNo, setCardNo] = useState("");
+    const [address, setAddress] = useState("");
+    const [postal, setPostal] = useState("");
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [showScrollBtn, setShowScrollBtn] = useState("");
     const productList = [
         { productID: 329839, productName: 'Minion fries', price: 50.00, rating: 3, description: 'The only few minion fries', seller: 'MacRonald', amtSold: 5, amtAvailable: 10, productType: 'Food', picturePath: Minions },
@@ -83,9 +106,23 @@ function CheckOut() {
             setShowScrollBtn(false);
         }
     }
+    function showCart() {
+        //    document.getElementById("shoppingCart").style.width = "250px";animation: out 1s ease 0.5s 1 normal forwards       out 1s ease
+        document.getElementById("paymentSection").style.animation = "out 1s ease 0.5s 1 normal forwards";
+        //document.getElementById("paymentForm").style.animation = "out 1s ease 0.5s 1 normal forwards";
+        //document.getElementById("form").style.animation = "form 1s ease 0.5s 1 normal forwards";
+        
+        //document.getElementById("paymentForm").style.transition = "display 2s";
+        //document.getElementById("paymentForm").style.display = "none";
+    }
+    //hide the shopping cart
+    function hideCart() {
+        //    document.getElementById("shoppingCart").style.width = "0px";
+        document.getElementById("paymentForm").style.right = "-50%";
+    }
     /*const { data } = this.props.location.data*/
     return (
-        //onSubmit={ilterdata(OppoList)}
+        //onSubmit={ilterdata(OppoList)}{/*<ProgressBar animated now={45} />*/}
         //FBD9D9 backgroundColor:'#f5f5f5'
         //class="oppoNFavTitle", boxShadow:' 0 1px 0 #000 inset'style={{ backgroundColor:'#f5f5f5'}}
 
@@ -97,11 +134,34 @@ function CheckOut() {
             `    
                 <checkOut>
                     <top>
-                        <div class='progressBar'>
+                        {/*<div class='progressBar'>*/}
+                        {/*    <div class='selectedProduct'>*/}
+                        {/*        <span class='circle'><FontAwesomeIcon  icon={faSpinner} size='2xl' style={{textAlign:"center",height:'70%',padding:'15%',width:'70%'}}></FontAwesomeIcon></span>*/}
+                        {/*        <h4>Selected Product</h4>*/}
                             
-                            <ProgressBar animated now={45} />
-                        </div>
+                        {/*    </div>*/}
+                        {/*    <div class='payment'>*/}
+                        {/*        <span class='circle'><FontAwesomeIcon icon={faCheck} size='2xl' style={{ textAlign: "center", height: '70%', padding: '15%', width: '70%' }}></FontAwesomeIcon></span>*/}
+                        {/*        <h4>Payment</h4>*/}
+
+                        {/*    </div>*/}
+                        {/*    <div class='placeOrder'>*/}
+                        {/*        <span class='circle'><FontAwesomeIcon icon={faCheck} size='2xl' style={{ textAlign: "center", height: '70%', padding: '15%', width: '70%' }}></FontAwesomeIcon></span>*/}
+                        {/*        <h4>Place Order</h4>*/}
+
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </top>
+                    {/*<paymentSection id='paymentSection'>*/}
+                    {/*    <div className='paymentForm'id='paymentForm'>*/}
+                            
+                    {/*            <button   onClick={()=>showCart()} >*/}
+                    {/*                Submit*/}
+                    {/*            </button>*/}
+                            
+                    {/*    </div>*/}
+                    {/*</paymentSection>*/}
+                    {/*<div style={{ display: "none" }}/>*/}
                     <left>
                         <div class="Products" style={{ textAlign: 'left' }}>
                             <h2>Products Ordered</h2>
@@ -124,13 +184,48 @@ function CheckOut() {
                         
                     </left>
                     <right>
-                        <div class="OrderSummary" style={{ textAlign: 'left' }}>
-                            <h2>Form</h2>
-                            <h5>Payment Method:</h5>
-                            <h5>Delivery: $1.90</h5>
-                            <hr />
-                            <h3>Total: $45.80</h3>
-                        </div>
+                        {/*<div class="OrderSummary" style={{ textAlign: 'left' }}>*/}
+                        {/*    */}{/*<h2>Form</h2>*/}
+                        {/*    */}{/*<h5>Payment Method:</h5>*/}
+                        {/*    */}{/*<h5>Delivery: $1.90</h5>*/}
+                        {/*    */}{/*<hr />*/}
+                        {/*    */}{/*<h3>Total: $45.80</h3>*/}
+                        {/*    <Form>*/}
+                        {/*        <Form.Group className="mb-3" >*/}
+                        {/*            <Form.Label>Card Number</Form.Label>*/}
+                        {/*            <Form.Control placeholder="Enter Card Number" required/>*/}
+                        {/*        </Form.Group>*/}
+                        {/*        <Row className="mb-3">*/}
+                        {/*        <Form.Group as={Col} md="6" className="mb-3" >*/}
+                        {/*            <Form.Label>Expiry Date</Form.Label>*/}
+                        {/*                <Form.Control placeholder="Enter Expiry Date" required/>*/}
+                        {/*        </Form.Group>*/}
+                        {/*        <Form.Group as={Col} md="4" className="mb-3">*/}
+                        {/*            <Form.Label>CVV</Form.Label>*/}
+                        {/*                <Form.Control placeholder="Enter CVV" type="password" required/>*/}
+                        {/*            </Form.Group>*/}
+                        {/*            </Row>*/}
+                        {/*        <Form.Group className="mb-3">*/}
+                        {/*            <Form.Label>Name On Card</Form.Label>*/}
+                        {/*            <Form.Control placeholder="Enter Name On Card" required/>*/}
+                        {/*        </Form.Group>*/}
+                        {/*        <Form.Group className="mb-3">*/}
+                        {/*            <Form.Label>Billing Address</Form.Label>*/}
+                        {/*            <Form.Control placeholder="Enter Billing Address" required/>*/}
+                        {/*        </Form.Group>*/}
+                        {/*        <Form.Group className="mb-3">*/}
+                        {/*            <Form.Label>Postal Code</Form.Label>*/}
+                        {/*            <Form.Control placeholder="Enter Postal Code" required />*/}
+                        {/*        </Form.Group>*/}
+                                
+                        {/*        */}{/*<Button variant="primary" type="submit">*/}
+                        {/*        */}{/*    Submit*/}
+                        {/*        */}{/*</Button>*/}
+                        {/*        <Form.Text className="text-muted">*/}
+                        {/*            Your credit card information will be kept a secret:)*/}
+                        {/*        </Form.Text>*/}
+                        {/*    </Form>*/}
+                        {/*</div>*/}
                         <div class="OrderSummary" style={{textAlign:'left'}}>
                             <h2>Order</h2>
                             
@@ -138,9 +233,13 @@ function CheckOut() {
                             <h5>Delivery: $1.90</h5>
                             <hr />
                             <h3>Total: $45.80</h3>
-                            <button>Place Order</button>
+                            {/*<button class="btn btn-primary">Place Order</button>*/}
+                            <Button variant="primary" onClick={handleShow}>
+                                Enter payment details
+                            </Button>
                         </div>
-                    </right>
+                        </right>
+                       {/* </div>*/}
 
                 </checkOut>
 
@@ -148,7 +247,62 @@ function CheckOut() {
 
                </div>
 
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Enter Card details</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
 
+                        <Form.Group className="mb-3" >
+                            <Form.Label>Card Number</Form.Label>
+                            <Form.Control placeholder="Enter Card Number" required onChange={(e) => setCardNo(e.target.value)}/>
+                        </Form.Group>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="6" className="mb-3" >
+                                <Form.Label>Expiry Date</Form.Label>
+                                <Form.Control placeholder="Enter Expiry Date" required />
+                            </Form.Group>
+                            <Form.Group as={Col} md="4" className="mb-3">
+                                <Form.Label>CVV</Form.Label>
+                                <Form.Control placeholder="Enter CVV" type="password" required />
+                            </Form.Group>
+                        </Row>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Name On Card</Form.Label>
+                            <Form.Control placeholder="Enter Name On Card" required />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Billing Address</Form.Label>
+                            <Form.Control placeholder="Enter Billing Address" required onChange={(e) => setAddress(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Postal Code</Form.Label>
+                            <Form.Control placeholder="Enter Postal Code" required onChange={(e) => setPostal(e.target.value)}/>
+                        </Form.Group>
+
+                        {/*<Button variant="primary" type="submit">*/}
+                        {/*    Submit*/}
+                        {/*</Button>*/}
+                        <Form.Text className="text-muted">
+                            Your credit card information will be kept a secret:)
+                        </Form.Text>
+                        
+                        <br />
+                        <Button variant="secondary" onClick={handleClose}>
+                            Cancel
+
+                    </Button>
+                        <Button variant="primary" type="submit">Place order</Button>
+                    {/*    <Button type="submit">Submit form</Button>*/}
+                    </Form>
+                </Modal.Body>
+            </Modal>
 
         </div>
 
