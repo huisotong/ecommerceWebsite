@@ -97,8 +97,13 @@ function CheckOut() {
                                         <img style={{maxHeight:'100%',maxWidth:'100%'}} src={row["picturePath"]} alt="First slide" />
                                     </div>
                                     <div class='singleProductInfo' style={{ paddingLeft:'10px' }}>
-                                        <h5>{row["productName"]}</h5>
-                                        <h6>Variation: White</h6>
+                                        <div style={{ width: '65%',height:'100%',float:'left' }}>
+                                            <h5>{row["productName"]}</h5>
+                                            <h6>Variation: White</h6>
+                                        </div>
+                                        <div style={{ width: '35%', height: '100%', float: 'left',textAlign:'right' }}>
+                                            <h5>${row["price"]}</h5>
+                                            </div>
                                         </div>
                                     
                                 </div>
