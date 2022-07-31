@@ -15,7 +15,7 @@ const NavBar = () => {
     return (
         <div class='navbar' >
             <div style={{ width: '50%' ,height:'100%'}}>
-                <h1 style={{ margin: "0px", fontFamily: 'Concert One', paddingLeft: '8%', paddingTop:'2%'}}>ezShopy! ONE STOCK EACH SALE!!</h1></div>
+                <h1 style={{ margin: "0px", fontFamily: 'Concert One', paddingLeft: '8%', paddingTop:'2%'}}>ezShopy! ONE STOCK EACH!!</h1></div>
             <div style={{ width: '50%' ,height:'100%'}} >
                 
                 <Form className="d-flex" style={{ paddingTop: '2.3%',paddingLeft:'10%', width:'60%' }}>

@@ -207,6 +207,12 @@ function HomePage() {
         }
     });
     useEffect(() => {
+        let value = 0
+        if (cart.length === 0) {
+            setTotalCost(value.toFixed(2));
+        }
+    });
+    useEffect(() => {
         
         if (cart.length !== 0) {
             document.getElementById("shoppingCartButton").style.animation = "shoppingCartButton 1s ease infinite"
