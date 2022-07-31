@@ -83,7 +83,7 @@ function CheckOut() {
 
             <NavBar  />
             <div class="whole">
-            `    
+                
                 <checkOut>
                     <top>
                     </top>
